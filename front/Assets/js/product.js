@@ -7,10 +7,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let sectionpushitem = document.querySelector(".item");
 
     let product = await getProductById(idProduct);
+    console.log(product);
 
-    let productclass = new Productclass(product);
+    //Building instance of product to display
+    let productclass = new Productclass(
+      product._id,
+      product.name,
+      product.colors,
+      product.quantity,
+      product.price,
+      product.imageUrl,
+      product.description,
+      product.altTxt
+    );
+
+    //Building the html data to display
     let article = productclass.createViewOneProduct();
-
     sectionpushitem.appendChild(article);
 
     // ChangeTitleSite(product); TO DO
@@ -23,37 +35,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //   },
     // ];
     // localStorage.setItem("products", JSON.stringify(productseed));
-    ClickBtn(product);
+    productclass.ButtonClick(product);
   }
 
   init();
 
   function ChangeTitleSite(product) {}
-
-  function ClickBtn(product) {
-    let BtnPanier = document.getElementById("addToCart");
-    let productclass = new Productclass(product);
-    BtnPanier.addEventListener("click", (e) => {
-      e.preventDefault();
-
-      const selectedColor = document.getElementById("colors").value;
-      const selectedQuantity = document.getElementById("quantity").value;
-      const selectedProductName = document
-        .getElementById("title")
-        .innerText.trim();
-      if (
-        selectedColor !== "" &&
-        selectedQuantity > 0 &&
-        selectedQuantity <= 100
-      ) {
-        const basketValues = {
-          idSelectedProduct: idProduct,
-          selectedProductName: selectedProductName,
-          colorSelectedProduct: selectedColor,
-          quantity: selectedQuantity,
-        };
-        productclass.addProductToLocalStorage(basketValues);
-      }
-    });
-  }
 });

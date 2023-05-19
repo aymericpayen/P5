@@ -16,3 +16,8 @@ export async function getProductById(id) {
     console.log(error);
   }
 }
+
+export function getLocalStorageElement() {
+  return localStorage;
+}
+export async function getPriceFromProductId(id) {}
