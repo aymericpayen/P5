@@ -20,4 +20,3 @@ export async function getProductById(id) {
 export function getLocalStorageElement() {
   return localStorage;
 }
-export async function getPriceFromProductId(id) {}
