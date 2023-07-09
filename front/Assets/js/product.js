@@ -25,20 +25,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let article = productclass.createViewOneProduct();
     sectionpushitem.appendChild(article);
 
-    // ChangeTitleSite(product); TO DO
-    // const productseed = [
-    //   {
-    //     idSelectedProduct: "107fb5b75607497b96722bda5b504926",
-    //     selectedProductName: "Kanap Sinopé",
-    //     colorSelectedProduct: "Blue",
-    //     quantity: 1,
-    //   },
-    // ];
-    // localStorage.setItem("products", JSON.stringify(productseed));
     productclass.ButtonClick(product);
   }
 
   init();
-
-  function ChangeTitleSite(product) {}
 });

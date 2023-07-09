@@ -51,37 +51,4 @@ class Cartclass {
     );
     return article;
   }
-  deleteClick() {
-    let deleteButtons = document.querySelectorAll(".deleteItem");
-    deleteButtons.forEach((deleteButton) => {
-      deleteButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        let deleteName = event.target.getAttribute("data-name");
-        let deleteColor = event.target.getAttribute("data-color");
-        let deleteItemReference = deleteName + " " + deleteColor;
-        localStorage.removeItem(deleteItemReference);
-        location.reload();
-        alert("Article supprimé du panier.");
-      });
-    });
-  }
-
-  changeQuantity() {
-    let quantityInputs = document.querySelectorAll(".itemQuantity");
-    quantityInputs.forEach((quantityInput) => {
-      quantityInput.addEventListener("change", (event) => {
-        event.preventDefault();
-        let quantityName = event.target.getAttribute("data-name");
-        let quantityColor = event.target.getAttribute("data-color");
-        let quantityItemReference = quantityName + " " + quantityColor;
-        let localStorageItem = localStorage.getItem(quantityItemReference);
-        let itemObject = JSON.parse(localStorageItem);
-        itemObject.quantity = quantityInput.value;
-        const updatedItemString = JSON.stringify(itemObject);
-        localStorage.setItem(quantityItemReference, updatedItemString);
-        location.reload();
-        alert("Quantité modifiée.");
-      });
-    });
-  }
 }

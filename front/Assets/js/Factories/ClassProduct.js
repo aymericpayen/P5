@@ -117,19 +117,23 @@ class Productclass {
         colorChoosen,
         quantityChoosen
       );
-
-      if (
-        colorChoosen != "" &&
-        quantityChoosen >= 1 &&
-        quantityChoosen <= 100
-      ) {
+      if (colorChoosen != "" && quantity >= 1 && quantityChoosen <= 100) {
         localStorage.setItem(
           product.name + " " + colorChoosen,
           JSON.stringify(productChoosen)
         );
+        alert("Produit rajouté!");
+      } else if (quantityChoosen > 100) {
+        alert(
+          "La quantité d'article rajouté au panier ne peut etre supérieur a 100"
+        );
+      } else if (quantity == 0) {
+        alert(
+          "La quantité d'article rajouté au panier doit être supérieur a 0"
+        );
       } else {
         alert(
-          "Veuillez renseigner une couleur et un quantitté avant de rajouter un article au panier"
+          "Veuillez renseigner une couleur et une quantité (>0 et <100) avant de rajouter un article au panier"
         );
       }
     });
